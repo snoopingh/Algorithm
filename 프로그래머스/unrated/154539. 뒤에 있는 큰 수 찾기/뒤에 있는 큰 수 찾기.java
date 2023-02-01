@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Stack;
 
 class Solution {
@@ -5,6 +6,7 @@ class Solution {
         Stack<Node> stack = new Stack<>();
         stack.push(new Node(0, numbers[0]));
         int[] answer = new int[numbers.length];
+        Arrays.fill(answer, -1);
 
         for (int i = 1; i < numbers.length; i++) {
             while (!stack.isEmpty()) {
@@ -17,12 +19,6 @@ class Solution {
                 }
             }
             stack.push(new Node(i, numbers[i]));
-        }
-
-        for (int i = 0; i < numbers.length; i++) {
-            if (answer[i] == 0) {
-                answer[i] = -1;
-            }
         }
 
         return answer;
