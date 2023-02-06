@@ -2,20 +2,19 @@ class Solution {
     public String solution(String s, String skip, int index) {
         StringBuilder answer = new StringBuilder();
 
-        for (int i = 0; i < s.length(); i++) {
-            int num = s.charAt(i);
+        for (char c : s.toCharArray()) {
+            char temp = c;
+            int idx = 0;
 
-            for (int j = 0; j < index; j++) {
+            while (idx < index) {
+                temp = temp == 'z' ? 'a' : (char) (temp + 1);
 
-                do {
-                    num++;
-                    if (num == 123) {
-                        num = 97;
-                    }
-                } while (skip.indexOf(num) > -1);
+                if (!skip.contains(String.valueOf(temp))) {
+                    idx++;
+                }
             }
 
-            answer.append((char) num);
+            answer.append(temp);
         }
 
         return answer.toString();
