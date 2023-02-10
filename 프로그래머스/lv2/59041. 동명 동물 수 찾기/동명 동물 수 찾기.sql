@@ -1,0 +1,11 @@
+SELECT NAME
+     , CNT
+  FROM (
+      SELECT NAME
+           , COUNT(*) AS CNT
+        FROM ANIMAL_INS
+       WHERE NAME IS NOT NULL
+       GROUP BY NAME
+  )
+ WHERE CNT >= 2
+ ORDER BY NAME
